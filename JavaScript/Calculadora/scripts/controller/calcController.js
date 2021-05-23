@@ -32,16 +32,28 @@ class CalcController {
       this.displayTime = this.currentDate.toLocaleTimeString(this._locale);
   }
 
+  addEventListenerAll(element, events, fn){
+    events.split(' ').forEach(event => {
+     element.addEventListener(event, fn, false);
+    })
+
+  }
+
   initButtonsEnvent(){
     let buttons = document.querySelectorAll("#buttons > g, #parts > g");
 
     buttons.forEach((btn, index) => {
 
-      btn.addEventListener('click', e => {
+      this.addEventListenerAll(btn, 'click drag', e => {
         //console.log(e);
         //console.log(btn);
         console.log(btn.className.baseVal.replace("btn-", ""));        
-      })
+      });
+
+      this.addEventListenerAll(btn, 'mouseover mouseup mousedow', e => {
+        btn.style.cursor = 'pointer';
+      });
+
     })
 
   }
