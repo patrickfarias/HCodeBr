@@ -8,6 +8,7 @@ class CalcController {
       this._timeEl = document.querySelector("#hora");
       this._currentDate;
       this.initialize();
+      this.initButtonsEnvent();
   }
 
   initialize(){
@@ -33,6 +34,16 @@ class CalcController {
 
   initButtonsEnvent(){
     let buttons = document.querySelectorAll("#buttons > g, #parts > g");
+
+    buttons.forEach((btn, index) => {
+
+      btn.addEventListener('click', e => {
+        //console.log(e);
+        //console.log(btn);
+        console.log(btn.className.baseVal.replace("btn-", ""));        
+      })
+    })
+
   }
   
   get displayTime(){
